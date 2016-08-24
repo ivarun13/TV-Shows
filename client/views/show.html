@@ -1,0 +1,15 @@
+<div class="container">
+    <img ng-src="{{show.image.medium}}">
+	<h2>{{show.name}}</h2>
+	<l ng-repeat="g in show.genres">
+	{{g}} |
+	</l>
+	<br>
+	<p ng-bind-html='show.summary | trustHTML'></p>
+	<h2>Cast</h2>
+	<div ng-repeat="c in show._embedded.cast">
+	<img ng-src="{{c.person.image.medium || '/image/image2.jpg'}}" height="80" width="80">{{c.person.name}}..........{{c.character.name}}
+	<br><br>
+	</div>
+
+</div>

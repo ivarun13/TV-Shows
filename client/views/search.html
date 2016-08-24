@@ -1,0 +1,79 @@
+<div class="search-header">
+  <div class="container" >
+    
+    <div class="row">
+      <div class="col-md-8 ">
+        <div ng-init="getdata()" class="container-fluid">
+        <form ng-submit="callback()">
+          <h2 class="v-center">search</h2>
+          <p class="lead">find a TV show by name</p>
+          <div class="input-group">
+            <input name="states" type="text" id="states" class="form-control input-md" ng-model="name" uib-typeahead="msg.name for msg in automsg | filter:$viewValue | limitTo:8" />
+            <span class="input-group-btn">
+            	<button 
+            		type="submit"
+            		class="btn btn-md btn-warning pull-right"
+                id = "submit"
+                ng-click="search()">
+            		search
+            	</button>
+            </span>
+          </div>  
+          <p ng-show="characters.length === 0 ">
+            <i>* no results found</i>
+          </p>
+           
+        </form>
+        </div>
+
+         
+         
+         <div id='messagesDiv'></div>
+     
+        <div ng-if="characters.alternatives.length" class="more-results-block">
+        
+          <p >
+            <h3>Search results</h3>
+            <hr/>
+          </p>
+          <div>
+            <div ng-repeat="alt in characters.alternatives">
+             <!-- <p ng-repeat="alt2 in alt.show.image">
+              {{alt2}}
+              </p>  -->
+               
+               <img ng-src="{{alt.show.image.medium}}">
+            	<a style="cursor: pointer" class="h3" ng-click="characters.main = alt">
+                {{alt.show.name}}
+            	</a><br>
+             <h3>summary of {{alt.show.name}} :</h3> <br>  
+             <p ng-bind-html='alt.show.summary | trustHTML'></p>
+             <br>
+             <a href="/show/{{alt.show.id}}" class="btn btn-info btn btn-md btn-warning pull-right" role="button">Details</a>
+             <br>
+             <br>
+
+              
+              
+            </div>
+          </div>
+        </div>
+
+      </div><br><br><br><br><br>
+      <div class="col-md-4">
+<div class="panel panel-primary">
+      <div class="panel-heading">Search History</div>
+      <div class="panel-body">
+        <ul id="example-messages">
+   <li ng-repeat="msg in messages">
+   <a href="#" ng-click="search2(msg.name)">{{ msg.name }}</a>
+   
+    
+  </li>
+       </ul>
+      </div>
+    </div>
+    </div>
+    </div>
+  </div>
+</div>

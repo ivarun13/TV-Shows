@@ -1,0 +1,8 @@
+<div ng-if="character" class="col-md-7 character-block">
+	<div>
+		<h2>{{character.name}}</h2>
+    	<img ng-src="{{character.image.small_url}}">
+    	<p>{{character.deck}}</p>
+    	<a href="/character/{{character.id}}">Details</a>
+	</div>  
+</div>
